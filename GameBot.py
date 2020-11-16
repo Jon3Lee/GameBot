@@ -7,4 +7,4 @@ client = commands.Bot(command_prefix = '!jk')
 async def on_ready():
 	print('Game Bot is ready.')
 
-client.run('NjUxNTk3MTMwMTc5NDExOTcx.XecNHQ.MnQxyHKuCAAaF3LCkk5AAE9NSaY')
+client.run('TOKEN OMITTED')
