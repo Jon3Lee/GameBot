@@ -7,10 +7,8 @@ client = commands.Bot(command_prefix = 'g.')
 async def on_ready():
 	print('Game Bot is ready.')
 	
-@client.event
-async def on_message(message):
-
-	if message.content.startswith("What's up bot"):
-		await message.channel.send("Ur trash kid get good at life")
-
+@client.command()
+async def ping(ctx):
+	await ctx.send(f'Ping! Response time is {round(client.latency * 1000)}ms')
+	
 client.run('TOKEN OMITTED')
