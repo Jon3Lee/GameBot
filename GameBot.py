@@ -1,4 +1,5 @@
 import discord
+from random import choice
 from discord.ext import commands
 
 client = commands.Bot(command_prefix = 'g.')
