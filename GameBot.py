@@ -11,4 +11,9 @@ async def on_ready():
 async def ping(ctx):
 	await ctx.send(f'Ping! Response time is {round(client.latency * 1000)}ms')
 	
+@client.command(aliases = ['fortune' , 'question'])
+async def YesNo(ctx, *, question):
+	responses = ['Yes.', 'No.']
+	await ctx.send(f'Question: {question}\nAnswer: {random.choice(responses)}')
+	
 client.run('TOKEN OMITTED')
