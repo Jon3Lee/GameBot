@@ -44,7 +44,7 @@ async def help(ctx):
 				       *Gives you a randomly generated sauce* ;)")
 	embed.set_author(name = "Game Bot Help")
 	await ctx.send(embed=embed)
-
+#Hello gurl
 
 
 '''@client.event
