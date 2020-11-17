@@ -20,6 +20,10 @@ async def fortune(ctx, *, question):
 				'Look at yourself in the mirror before you ask that question.', 'Most definitely.', 'Hell no']
 	await ctx.send(f'Question: {question}\nAnswer: {random.choice(responses)}')
 
+@client.commmad(aliases = ['al'])
+async def animelist(ctx, *, name):
+	await ctx.send(url = (f'https://myanimelist.net/profile/{name}'))
+
 @client.command()
 async def roll(ctx, num = 100):
 	await ctx.send(f"{ctx.author.mention}'s roll is: {random.randrange(0,num)}")
