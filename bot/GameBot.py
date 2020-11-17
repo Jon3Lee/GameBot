@@ -26,7 +26,9 @@ async def roll(ctx, num = 100):
 
 @client.command()
 async def sauce(ctx):
-	await ctx.send(f"{random.randrange(100000, 999999)}")
+	sce = random.randrange(100000, 336478)
+	embed = discord.Embed(title = "Sauce", description = "Here is your sauce!", url = (f'https://www.nhentai.net/g/{sce}'), color = 0xFC039D)
+	await ctx.send(embed = embed)
 
 @client.command()
 async def help(ctx):
@@ -38,6 +40,8 @@ async def help(ctx):
 				       *Gives you a randomly generated sauce* ;)")
 	embed.set_author(name = "Game Bot Help")
 	await ctx.send(embed=embed)
+
+
 
 '''@client.event
 async def on_message(message):
