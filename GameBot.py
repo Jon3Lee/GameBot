@@ -4,7 +4,7 @@ from discord.ext import commands
 
 client = commands.Bot(command_prefix = 'g.', help_command = None)
 token = open("token.txt", "r").readline()
-
+print("test")
 
 @client.event
 async def on_ready():
