@@ -3,8 +3,7 @@ import random
 from discord.ext import commands
 
 client = commands.Bot(command_prefix = 'g.', help_command = None)
-token = open("token.txt", "r").readline()
-print("test")
+token = open("token.txt", mode = "r").readline()
 
 @client.event
 async def on_ready():
@@ -40,6 +39,8 @@ async def help(ctx):
 				       *Gives you a randomly generated sauce* ;)")
 	embed.set_author(name = "Game Bot Help")
 	await ctx.send(embed=embed)
+
+
 
 '''@client.event
 async def on_message(message):
