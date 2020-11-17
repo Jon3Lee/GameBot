@@ -1,13 +1,14 @@
 import discord
 import random
+import os
 from discord.ext import commands
 
 client = commands.Bot(command_prefix = 'g.', help_command = None)
 token = open("token.txt", mode = "r").readline()
 
-@client.event
-async def on_ready():
-	print('Game Bot is ready.')
+# @client.event
+# async def on_ready():
+# 	print('Game Bot is ready.')
 
 @client.command(help = 'this is a test')
 async def ping(ctx):
@@ -29,11 +30,11 @@ async def animelist(ctx, name):
 async def roll(ctx, num = 100):
 	await ctx.send(f"{ctx.author.mention}'s roll is: {random.randrange(0,num)}")
 
-@client.command()
-async def sauce(ctx):
-	sce = random.randrange(100000, 336478)
-	embed = discord.Embed(title = "Sauce", description = "Here is your sauce!", url = (f'https://www.nhentai.net/g/{sce}'), color = 0xFC039D)
-	await ctx.send(embed = embed)
+# @client.command()
+# async def sauce(ctx):
+# 	sce = random.randrange(100000, 336478)
+# 	embed = discord.Embed(title = "Sauce", description = "Here is your sauce!", url = (f'https://www.nhentai.net/g/{sce}'), color = 0xFC039D)
+# 	await ctx.send(embed = embed)
 
 @client.command()
 async def help(ctx):
@@ -46,6 +47,22 @@ async def help(ctx):
 				       *Pulls up NAME's MyAnimeList*")
 	embed.set_author(name = "Game Bot Help")
 	await ctx.send(embed=embed)
+
+@client.command()
+async def load(ctx, extension):
+	client.load_extension(f'cogs.{extension}')
+
+@client.command()
+async def unload(ctx, extension):
+	client.unload_extension(f'cogs.{extension}')
+
+#goes through cogs folder for files
+for filename in os.listdir('./cogs'):
+	#checks if filename is a python file
+	if filename.endswith('.py'):
+		#removes .py from the filename
+		client.load_extension(f'cogs.{filename[:-3]}')
+
 #Hello gurl
 
 
