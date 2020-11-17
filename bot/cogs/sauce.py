@@ -9,9 +9,9 @@ class Sauce(commands.Cog):
 	
 
 	#Events
-	@commands.Cog.listener()
-	async def on_ready(self):
-		print('Bot is online')
+	# @commands.Cog.listener()
+	# async def on_ready(self):
+	# 	print('Bot is online')
 
 	#Commands
 	@commands.command()
