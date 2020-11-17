@@ -2,13 +2,41 @@ import discord
 import random
 from discord.ext import commands
 
+#Enable Intents.members
+intents = discord.Intents.default()
+intents.members = True 
+
 client = commands.Bot(command_prefix = 'g.', help_command = None)
 token = open("token.txt", mode = "r").readline()
 
+
+
+@client.event
+async def on_connect():
+	print('Game Bot is now connected to discord.')
 @client.event
 async def on_ready():
-	print('Game Bot is ready.')
+	print('Game Bot is ready and running.')
 
+@client.event
+async def on_member_join(member):
+	await member.send(f"Welcome {member.name} to Game Server! <TEST>")
+	await client.get_channel(idchannel).send(f'Welcome {member.name} to Game!')
+
+@client.event
+async def on_member_remove(member):
+	await client.get_channel(idchannel).send(f'Goodbye! {member.name} has left Game.')
+
+
+'''@client.event
+async def on_message(message):
+	if message.content.startswith("What's up bot"):
+		await message.channel.send("Hey! Thanks for creating me!")'''
+
+
+
+		
+#COMMANDS
 @client.command(help = 'this is a test')
 async def ping(ctx):
 	await ctx.send(f'Pong! Response time is {round(client.latency * 1000)}ms')
@@ -46,12 +74,5 @@ async def help(ctx):
 				       *Pulls up NAME's MyAnimeList*")
 	embed.set_author(name = "Game Bot Help")
 	await ctx.send(embed=embed)
-#Hello gurl
-
-
-'''@client.event
-async def on_message(message):
-	if message.content.startswith("What's up bot"):
-		await message.channel.send("Hey! Thanks for creating me!")'''
 
 client.run(token)
