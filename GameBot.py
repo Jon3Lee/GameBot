@@ -3,6 +3,7 @@ import random
 from discord.ext import commands
 
 client = commands.Bot(command_prefix = 'g.', help_command = None)
+token = open("token.txt", "r").readline()
 
 
 @client.event
@@ -46,4 +47,4 @@ async def on_message(message):
 	if message.content.startswith("What's up bot"):
 		await message.channel.send("Hey! Thanks for creating me!")'''
 
-client.run('TOKEN OMITTED')
+client.run(token)
