@@ -20,9 +20,9 @@ async def fortune(ctx, *, question):
 				'Look at yourself in the mirror before you ask that question.', 'Most definitely.', 'Hell no']
 	await ctx.send(f'Question: {question}\nAnswer: {random.choice(responses)}')
 
-@client.command(aliases = ['alist'])
+@client.command(aliases = ['al'])
 async def animelist(ctx, name):
-	embed = discord.Embed(title = f'{name}s list', url = (f'https://myanimelist.net/profile/{name}'), color = 0xFC039D)
+	embed = discord.Embed(title = f'{name}s list', url = (f'https://myanimelist.net/profile/{name}'), color = 0x03C6FC)
 	await ctx.send(embed = embed)
 
 @client.command()
@@ -38,11 +38,12 @@ async def sauce(ctx):
 @client.command()
 async def help(ctx):
 	embed = discord.Embed(title = "Commands", color=0xff9500, description = 
-					   "The prefix for all commands is ``g.[command]``.\n\n**Help** | *Pulls up this help menu*\n**Ping** |\
-					   *Checks Game Bot's ping against Discord's Server.*\n**Fortune** <question> |\
-					   *Game Bot answers your yes or no question.*\n**Roll** <OPTIONAL> |\
-				       *Rolls a dice from 0 to 100 by default or 0 to OPTIONAL\n**Sauce**  |\
-				       *Gives you a randomly generated sauce* ;)")
+					   "The prefix for all commands is ``g.[command]``.\n\n**help** | *Pulls up this help menu*\n**Ping** |\
+					   *Checks Game Bot's ping against Discord's Server.*\n**fortune** <question> |\
+					   *Game Bot answers your yes or no question.*\n**roll** <OPTIONAL> |\
+				       *Rolls a dice from 0 to 100 by default or 0 to OPTIONAL\n**sauce**  |\
+				       *Gives you a randomly generated sauce* ;)\n **animelist** <NAME> |\
+				       *Pulls up NAME's MyAnimeList*")
 	embed.set_author(name = "Game Bot Help")
 	await ctx.send(embed=embed)
 #Hello gurl
