@@ -6,7 +6,7 @@ from discord.ext import commands
 intents = discord.Intents.default()
 intents.members = True 
 
-client = commands.Bot(command_prefix = 'g.', help_command = None)
+client = commands.Bot(command_prefix = 'g.', help_command = None, intents = intents)
 token = open("token.txt", mode = "r").readline()
 
 
@@ -20,12 +20,12 @@ async def on_ready():
 
 @client.event
 async def on_member_join(member):
-	await member.send(f"Welcome {member.name} to Game Server! <TEST>")
-	await client.get_channel(idchannel).send(f'Welcome {member.name} to Game!')
+	#await member.send(f"Welcome {member.name} to Game Server! <TEST>") #Sends a DM to member on join.
+	await client.get_channel(768660907433000994).send(f'Welcome {member.name} to Game!')
 
 @client.event
 async def on_member_remove(member):
-	await client.get_channel(idchannel).send(f'Goodbye! {member.name} has left Game.')
+	await client.get_channel(768660907433000994).send(f'Goodbye! {member.name} has left Game.')
 
 
 '''@client.event
@@ -35,7 +35,7 @@ async def on_message(message):
 
 
 
-		
+
 #COMMANDS
 @client.command(help = 'this is a test')
 async def ping(ctx):
