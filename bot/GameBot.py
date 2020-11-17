@@ -17,9 +17,8 @@ async def ping(ctx):
 @client.command(aliases = ['for'])
 async def fortune(ctx, *, question):
 	responses = ['Yes.', 'No.', 'Only time will tell.', 'What kind of question even is that?', 'lmao no', 'Maybe? Ask again', 'Only god can answer this one.', 
-	'Look at yourself in the mirror before you ask that question.', 'Most definitely.', 'Hell no']
+				'Look at yourself in the mirror before you ask that question.', 'Most definitely.', 'Hell no']
 	await ctx.send(f'Question: {question}\nAnswer: {random.choice(responses)}')
-
 
 @client.command()
 async def roll(ctx, num = 100):
@@ -39,8 +38,6 @@ async def help(ctx):
 				       *Gives you a randomly generated sauce* ;)")
 	embed.set_author(name = "Game Bot Help")
 	await ctx.send(embed=embed)
-
-
 
 '''@client.event
 async def on_message(message):
