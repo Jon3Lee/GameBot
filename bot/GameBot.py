@@ -21,8 +21,9 @@ async def fortune(ctx, *, question):
 	await ctx.send(f'Question: {question}\nAnswer: {random.choice(responses)}')
 
 @client.commmad(aliases = ['al'])
-async def animelist(ctx, *, name):
-	await ctx.send(url = (f'https://myanimelist.net/profile/{name}'))
+async def animelist(ctx, name):
+	embed = discord.Embed(title = f'{name}s list', url = (f'https://myanimelist.net/profile/{name}'), color = 0xFC039D)
+	await ctx.send(embed = embed)
 
 @client.command()
 async def roll(ctx, num = 100):
