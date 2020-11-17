@@ -20,7 +20,7 @@ async def fortune(ctx, *, question):
 				'Look at yourself in the mirror before you ask that question.', 'Most definitely.', 'Hell no']
 	await ctx.send(f'Question: {question}\nAnswer: {random.choice(responses)}')
 
-@client.commmad(aliases = ['al'])
+@client.command(aliases = ['alist'])
 async def animelist(ctx, name):
 	embed = discord.Embed(title = f'{name}s list', url = (f'https://myanimelist.net/profile/{name}'), color = 0xFC039D)
 	await ctx.send(embed = embed)
