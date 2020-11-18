@@ -19,11 +19,12 @@ async def on_connect():
 async def on_ready():
 	print('Game Bot is ready and running.')
 
+
+
 #COMMANDS
 @client.command(help = 'this is a test')
 async def ping(ctx):
 	await ctx.send(f'Pong! Response time is {round(client.latency * 1000)}ms')
-
 
 @client.command(aliases = ['for'])
 async def fortune(ctx, *, question):
@@ -43,7 +44,6 @@ async def roll(ctx, num = 100):
 	if roll == 69:
 		await ctx.send(file = discord.File('./pictures/nice.jpg'))
 
-
 @client.command()
 async def load(ctx, extension):
 	client.load_extension(f'cogs.{extension}')
@@ -58,7 +58,5 @@ for filename in os.listdir('./cogs'):
 	if filename.endswith('.py'):
 		#removes .py from the filename
 		client.load_extension(f'cogs.{filename[:-3]}')
-
-
 
 client.run(token)
