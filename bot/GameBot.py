@@ -44,6 +44,15 @@ async def roll(ctx, num = 100):
 	if roll == 69:
 		await ctx.send(file = discord.File('./pictures/nice.jpg'))
 
+@client.command(aliases = ['flip'])
+async def coinflip(ctx):
+	flip = random.randrange(0,100)
+	if flip >= 50:
+		face = "heads"
+	else:
+		face = "tails"
+	await ctx.send(f'{ctx.author.mention} flips {face} on his coin.')
+
 @client.command()
 async def load(ctx, extension):
 	client.load_extension(f'cogs.{extension}')

@@ -22,7 +22,8 @@ class Help(commands.Cog):
 						   *Game Bot answers your yes or no question.*\n**roll** <OPTIONAL> |\
 					       *Rolls a dice from 0 to 100 by default or 0 to OPTIONAL\n**sauce**  |\
 					       *Gives you a randomly generated sauce* ;)\n **animelist** <NAME> |\
-					       *Pulls up NAME's MyAnimeList*")
+					       *Pulls up NAME's MyAnimeList*\n **flip** |\
+					       *Flips a coin*")
 		embed.set_author(name = "Game Bot Help")
 		await ctx.send(embed=embed)
 
