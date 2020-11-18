@@ -47,7 +47,6 @@ async def roll(ctx, num = 100):
 @client.command(aliases = ['flip'])
 async def coinflip(ctx):
 	flip = random.randrange(0,100)
-	coin = ""
 	if flip >= 50:
 		face = "heads"
 	else:
