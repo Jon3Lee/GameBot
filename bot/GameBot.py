@@ -1,5 +1,4 @@
 import discord
-import random
 import os
 from discord.ext import commands
 
@@ -20,12 +19,7 @@ async def on_ready():
 	print('Game Bot is ready and running.')
 
 
-
-# @client.command(help = 'this is a test')
-# async def ping(ctx):
-# 	await ctx.send(f'Pong! Response time is {round(client.latency * 1000)}ms')
-
-
+#Cogs
 @client.command()
 async def load(ctx, extension):
 	client.load_extension(f'cogs.{extension}')
