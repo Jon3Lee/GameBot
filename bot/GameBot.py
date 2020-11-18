@@ -31,7 +31,7 @@ async def fortune(ctx, *, question):
 				'Look at yourself in the mirror before you ask that question.', 'Most definitely.', 'Hell no']
 	await ctx.send(f'Question: {question}\nAnswer: {random.choice(responses)}')
 
-@client.command(aliases = ['al'])
+@client.command(aliases = ['al, mal'])
 async def animelist(ctx, name):
 	embed = discord.Embed(title = f'{name}s list', url = (f'https://myanimelist.net/profile/{name}'), color = 0x03C6FC)
 	await ctx.send(embed = embed)
@@ -41,8 +41,7 @@ async def roll(ctx, num = 100):
 	roll = random.randrange(0,num)
 	await ctx.send(f"{ctx.author.mention}'s roll is: {roll}")
 	if roll == 69:
-		await ctx.send("nice ;)")
-
+		await ctx.send(file = discord.File('./pictures/nice.jpg'))
 
 
 @client.command()
