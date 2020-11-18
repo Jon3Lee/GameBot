@@ -38,7 +38,10 @@ async def animelist(ctx, name):
 
 @client.command()
 async def roll(ctx, num = 100):
-	await ctx.send(f"{ctx.author.mention}'s roll is: {random.randrange(0,num)}")
+	roll = random.randrange(0,num)
+	await ctx.send(f"{ctx.author.mention}'s roll is: {roll}")
+	if roll == 69:
+		await ctx.send("nice ;)")
 
 
 
