@@ -19,6 +19,7 @@ async def on_connect():
 async def on_ready():
 	print('Game Bot is ready and running.')
 
+<<<<<<< Updated upstream
 @client.event
 async def on_member_join(member):
 	#await member.send(f"Welcome {member.name} to Game Server! <TEST>") #Sends a DM to member on join.
@@ -27,18 +28,28 @@ async def on_member_join(member):
 # @client.event
 # async def on_ready():
 # 	print('Game Bot is ready.')
+=======
+# @client.event
+# async def on_member_join(member):
+# 	#await member.send(f"Welcome {member.name} to Game Server! <TEST>") #Sends a DM to member on join.
+# 	await client.get_channel(768660907433000994).send(f'Welcome {member.name} to Game!')
+>>>>>>> Stashed changes
 
 
-@client.event
-async def on_member_remove(member):
-	await client.get_channel(768660907433000994).send(f'Goodbye! {member.name} has left Game.')
+# @client.event
+# async def on_member_remove(member):
+# 	await client.get_channel(768660907433000994).send(f'Goodbye! {member.name} has left Game.')
 
 
+
+<<<<<<< Updated upstream
 '''@client.event
 async def on_message(message):
 	if message.content.startswith("What's up bot"):
 		await message.channel.send("Hey! Thanks for creating me!")'''
 
+=======
+>>>>>>> Stashed changes
 
 
 
@@ -62,6 +73,8 @@ async def animelist(ctx, name):
 @client.command()
 async def roll(ctx, num = 100):
 	await ctx.send(f"{ctx.author.mention}'s roll is: {random.randrange(0,num)}")
+
+
 
 
 
