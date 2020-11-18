@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-
+#This file contains auto-assign roles and a welcome/goodbye message.
 class autorole(commands.Cog):
 	def __init__ (self, client):
 		self.client = client
