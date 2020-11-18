@@ -11,7 +11,7 @@ client = commands.Bot(command_prefix = 'g.', help_command = None, intents = inte
 token = open("token.txt", mode = "r").readline()
 
 
-
+#Checks if bot is connected and ready
 @client.event
 async def on_connect():
 	print('Game Bot is now connected to discord.')
@@ -21,37 +21,10 @@ async def on_ready():
 
 
 
-#COMMANDS
-@client.command(help = 'this is a test')
-async def ping(ctx):
-	await ctx.send(f'Pong! Response time is {round(client.latency * 1000)}ms')
+# @client.command(help = 'this is a test')
+# async def ping(ctx):
+# 	await ctx.send(f'Pong! Response time is {round(client.latency * 1000)}ms')
 
-@client.command(aliases = ['for'])
-async def fortune(ctx, *, question):
-	responses = ['Yes.', 'No.', 'Only time will tell.', 'What kind of question even is that?', 'lmao no', 'Maybe? Ask again', 'Only god can answer this one.', 
-				'Look at yourself in the mirror before you ask that question.', 'Most definitely.', 'Hell no']
-	await ctx.send(f'Question: {question}\nAnswer: {random.choice(responses)}')
-
-@client.command(aliases = ['al, mal'])
-async def animelist(ctx, name):
-	embed = discord.Embed(title = f'{name}s list', url = (f'https://myanimelist.net/profile/{name}'), color = 0x03C6FC)
-	await ctx.send(embed = embed)
-
-@client.command()
-async def roll(ctx, num = 100):
-	roll = random.randrange(0,num)
-	await ctx.send(f"{ctx.author.mention}'s roll is: {roll}")
-	if roll == 69:
-		await ctx.send(file = discord.File('./pictures/nice.jpg'))
-
-@client.command(aliases = ['flip'])
-async def coinflip(ctx):
-	flip = random.randrange(0,100)
-	if flip >= 50:
-		face = "heads"
-	else:
-		face = "tails"
-	await ctx.send(f'{ctx.author.mention} flips {face} on his coin.')
 
 @client.command()
 async def load(ctx, extension):
