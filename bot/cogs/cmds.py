@@ -15,7 +15,7 @@ class cmds(commands.Cog):
 
 	@commands.command(aliases = ['for'])
 	async def fortune(self, ctx, *, question):
-		responses = ['Yes.', 'No.', 'Only time will tell.', 'What kind of question even is that?', 'lmao no', 'Maybe? Ask again',
+		responses = ['Yes.', 'No.', 'Only time will tell.', 'lmao no', 'Maybe? Ask again',
 		 			'Only God can answer this one.', 'Look at yourself in the mirror before you ask that question.', 'Most definitely.'
 		 			, 'Hell no', 'For sure.', 'Yeahhhhh no.', 'It is certain.', 'Without a doubt.', "I don't think so"]
 		await ctx.send(f'Question: {question}\nAnswer: {random.choice(responses)}')
