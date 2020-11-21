@@ -7,7 +7,7 @@ intents = discord.Intents.default()
 intents.members = True 
 
 client = commands.Bot(command_prefix = 'g.', help_command = None, intents = intents)
-token = open("token.txt", mode = "r").readline()
+token = open("bot/token.txt", mode = "r").readline()
 
 
 #Checks if bot is connected and ready
@@ -29,7 +29,7 @@ async def unload(ctx, extension):
 	client.unload_extension(f'cogs.{extension}')
 
 #goes through cogs folder for files
-for filename in os.listdir('./cogs'):
+for filename in os.listdir('bot/cogs'):
 	#checks if filename is a python file
 	if filename.endswith('.py'):
 		#removes .py from the filename
