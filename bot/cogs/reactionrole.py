@@ -17,7 +17,6 @@ class reactionrole(commands.Cog):
             #Only works if emoji name is similar to role name, create if statement if there is a
             #case where the role name != emoji name
             role = discord.utils.get(guild.roles, name = emoji.name)
-
             #Assign role
             if role is not None:
                 #Find member within guild
@@ -25,6 +24,16 @@ class reactionrole(commands.Cog):
                 if member is not None:
                     await member.add_roles(role)
                     print(f'Assigned {role.name} to {member.name}')
+                else:
+                    print('Member not found.')
+            else:
+                message_id = payload.message_id
+                channel = self.client.get_channel(channel_id)
+                message = await channel.fetch_message(message_id)
+                user = self.client.get_user(user_id)
+                await message.remove_reaction(emoji, user)
+                print(f'Role not found, removing {emoji.name} from {user}!')
+
 
 
     @commands.Cog.listener()
