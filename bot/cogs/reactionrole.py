@@ -12,7 +12,7 @@ class reactionrole(commands.Cog):
         guild_id = payload.guild_id
         user_id = payload.user_id
         if channel_id == 780317227421401108:
-            #Find guild
+            #Find guild; Searches self.client.guilds for a guild with guild_id; returns first thing found
             guild = discord.utils.find(lambda g: g.id == guild_id, self.client.guilds)
             #Only works if emoji name is similar to role name, create if statement if there is a
             #case where the role name != emoji name
@@ -23,7 +23,7 @@ class reactionrole(commands.Cog):
                 member = discord.utils.find(lambda m: m.id == user_id, guild.members)
                 if member is not None:
                     await member.add_roles(role)
-                    print(f'Assigned {role.name} to {member.name}')
+                    print(f'Assigned {role.name} to {member}')
                 else:
                     print('Member not found.')
             else:
@@ -44,6 +44,7 @@ class reactionrole(commands.Cog):
         user_id = payload.user_id
         if channel_id == 780317227421401108:
             #Find guild
+            
             guild = discord.utils.find(lambda g: g.id == guild_id, self.client.guilds)
             #Only works if emoji name is similar to role name, create if statement if there is a
             #case where the role name != emoji name
@@ -55,7 +56,7 @@ class reactionrole(commands.Cog):
                 member = discord.utils.find(lambda m: m.id == user_id, guild.members)
                 if member is not None:
                     await member.remove_roles(role)
-                    print(f'Removed {role.name} from {member.name}')
+                    print(f'Removed {role.name} from {member}')
 
 def setup(client):
     client.add_cog(reactionrole(client))
