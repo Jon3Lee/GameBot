@@ -33,7 +33,7 @@ class cmds(commands.Cog):
 		else:
 			await ctx.send(f"{ctx.author.mention}'s roll is: {roll}")
 		if roll == 69:
-			await ctx.send(file = discord.File('./pictures/nice.jpg'))
+			await ctx.send(file = discord.File('bot/pictures/nice.jpg'))
 
 	@commands.command(aliases = ['flip'])
 	async def coinflip(self, ctx):
