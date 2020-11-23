@@ -2,9 +2,10 @@ import discord
 import os
 from discord.ext import commands
 
-#Enable Intents.members
+#Enable Intents
 intents = discord.Intents.default()
 intents.members = True 
+intents.reactions = True
 
 client = commands.Bot(command_prefix = 'g.', help_command = None, intents = intents)
 token = open("bot/token.txt", mode = "r").readline()
