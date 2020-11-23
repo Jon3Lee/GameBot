@@ -24,6 +24,7 @@ class reactionrole(commands.Cog):
                 member = discord.utils.find(lambda m: m.id == user_id, guild.members)
                 if member is not None:
                     await member.add_roles(role)
+                    print(f'Assigned {role.name} to {member.name}')
 
 
     @commands.Cog.listener()
@@ -45,6 +46,7 @@ class reactionrole(commands.Cog):
                 member = discord.utils.find(lambda m: m.id == user_id, guild.members)
                 if member is not None:
                     await member.remove_roles(role)
+                    print(f'Removed {role.name} from {member.name}')
 
 def setup(client):
     client.add_cog(reactionrole(client))
