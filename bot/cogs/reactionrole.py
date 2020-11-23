@@ -6,37 +6,45 @@ class reactionrole(commands.Cog):
         self.client = client
 
     @commands.Cog.listener()
-    async def on_reaction_add(self, reaction, user):
-        roleChannelid = '780317227421401108'
+    async def on_raw_reaction_add(self, payload):
+        channel_id = payload.channel_id
+        emoji = payload.emoji
+        guild_id = payload.guild_id
+        user_id = payload.user_id
+        if channel_id == 780317227421401108:
+            #Find guild
+            guild = discord.utils.find(lambda g: g.id == guild_id, self.client.guilds)
+            #Only works if emoji name is similar to role name, create if statement if there is a
+            #case where the role name != emoji name
+            role = discord.utils.get(guild.roles, name = emoji.name)
 
-        #If not in roles channel, do nothing.
-        if reaction.message.channel.id != roleChannelid:
-            return
-        
-        #Add roles per reaction addition
-        if str(reaction.emoji) == '👍':
-            role = discord.utils.get(user.guild.roles, name = 'wow')
-            await self.client.add_roles(user, role)
-        elif str(reaction.emoji) == '<:valorant:780320609946566667>':
-            role = discord.utils.get(user.guild.roles, name = 'valorant')
-            await self.client.add_roles(user, role)
+            #Assign role
+            if role is not None:
+                #Find member within guild
+                member = discord.utils.find(lambda m: m.id == user_id, guild.members)
+                if member is not None:
+                    await member.add_roles(role)
 
 
     @commands.Cog.listener()
-    async def on_reaction_remove(self, reaction, user):
-        roleChannelid = '780317227421401108'
+    async def on_raw_reaction_remove(self, payload):
+        channel_id = payload.channel_id
+        emoji = payload.emoji
+        guild_id = payload.guild_id
+        user_id = payload.user_id
+        if channel_id == 780317227421401108:
+            #Find guild
+            guild = discord.utils.find(lambda g: g.id == guild_id, self.client.guilds)
+            #Only works if emoji name is similar to role name, create if statement if there is a
+            #case where the role name != emoji name
+            role = discord.utils.get(guild.roles, name = emoji.name)
 
-        #If not in roles channel, do nothing.
-        if reaction.message.channel.id != roleChannelid:
-            return
-
-        #Remove roles per reaction removal
-        if str(reaction.emoji) == '<:wow:780323199732416564>':
-            role = discord.utils.get(user.guild.roles, name = 'wow')
-            await self.client.remove_roles(user, role)
-        elif str(reaction.emoji) == '<:valorant:780320609946566667>':
-            role = discord.utils.get(user.guild.roles, name = 'valorant')
-            await self.client.remove_roles(user, role)
+            #Remove role
+            if role is not None:
+                #Find member within guild
+                member = discord.utils.find(lambda m: m.id == user_id, guild.members)
+                if member is not None:
+                    await member.remove_roles(role)
 
 def setup(client):
     client.add_cog(reactionrole(client))
