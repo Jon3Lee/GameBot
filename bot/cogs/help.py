@@ -26,6 +26,7 @@ class Help(commands.Cog):
 					       *Flips a coin*")
 		embed.set_author(name = "Game Bot Help")
 		await ctx.send(embed=embed)
+		print(f'{ctx.author} called the help command.')
 
 
 def setup(client):

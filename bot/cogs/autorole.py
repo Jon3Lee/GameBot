@@ -14,6 +14,7 @@ class autorole(commands.Cog):
 		if channel is not None:
 			await channel.send(f'Welcome {member.mention} to Game!')
 			await member.add_roles(role)
+			print(f'{member} has joined the server.')
 
 
 	@commands.Cog.listener()
@@ -21,6 +22,7 @@ class autorole(commands.Cog):
 		channel = member.guild.system_channel
 		if channel is not None:
 			await channel.send(f'Goodbye! {member.mention} has left Game.')
+			print(f'{member} has left the server.')
 
 	@commands.Cog.listener()
 	async def on_message(self, message):
