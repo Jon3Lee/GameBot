@@ -19,7 +19,7 @@ class reactionrole(commands.Cog):
             role = discord.utils.get(guild.roles, name = emoji.name)
             #Assign role
             if role is not None:
-                #Find member within guild
+                #Find member within guild.members
                 member = discord.utils.find(lambda m: m.id == user_id, guild.members)
                 if member is not None:
                     await member.add_roles(role)

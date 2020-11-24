@@ -6,6 +6,8 @@ from discord.ext import commands
 intents = discord.Intents.default()
 intents.members = True 
 intents.reactions = True
+intents.messages = True
+intents.guilds = True
 
 client = commands.Bot(command_prefix = 'g.', help_command = None, intents = intents)
 token = open("bot/token.txt", mode = "r").readline()

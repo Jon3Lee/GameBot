@@ -20,7 +20,7 @@ class cmds(commands.Cog):
 		 			'Only God can answer this one.', 'Look at yourself in the mirror before you ask that question.', 'Most definitely.'
 		 			, 'Hell no', 'For sure.', 'Yeahhhhh no.', 'It is certain.', 'Without a doubt.', "I don't think so"]
 		await ctx.send(f'Question: {question}\nAnswer: {random.choice(responses)}')
-		print(f'I just gave {ctx.mention} their fortune!')
+		print(f'I just gave {ctx.author} their fortune!')
 
 	@commands.command(aliases = ['al', 'mal'])
 	async def animelist(self, ctx, name):
