@@ -9,7 +9,7 @@ class autorole(commands.Cog):
 	@commands.Cog.listener()
 	async def on_member_join(self, member):
 		#await member.send(f"Welcome {member.name} to Game Server! <TEST>") #Sends a DM to member on join.
-		channel = member.guild.system_channel
+		channel = member.guild.get_channel(839018259742326844)
 		role = discord.utils.get(member.guild.roles, name ='Casuals')
 		if channel is not None:
 			await channel.send(f'Welcome {member.mention} to Game!')
@@ -19,7 +19,7 @@ class autorole(commands.Cog):
 
 	@commands.Cog.listener()
 	async def on_member_remove(self, member):
-		channel = member.guild.system_channel
+		channel = member.guild.get_channel(839018259742326844)
 		if channel is not None:
 			await channel.send(f'Goodbye! {member.mention} has left Game.')
 			print(f'{member} has left the server.')
