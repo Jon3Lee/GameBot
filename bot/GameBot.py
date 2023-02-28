@@ -1,6 +1,7 @@
 import discord
 import os
 from discord.ext import commands
+import json
 
 #Enable Intents
 intents = discord.Intents.default()
@@ -10,7 +11,7 @@ intents.messages = True
 intents.guilds = True
 
 client = commands.Bot(command_prefix = 'g.', help_command = None, intents = intents)
-token = open("bot/token.txt", mode = "r").readline()
+token = open("/home/pi/GameBot/bot/token.txt", mode = "r").readline()
 
 
 #Checks if bot is connected and ready
@@ -32,10 +33,11 @@ async def unload(ctx, extension):
 	client.unload_extension(f'cogs.{extension}')
 
 #goes through cogs folder for files
-for filename in os.listdir('bot/cogs'):
-	#checks if filename is a python file
-	if filename.endswith('.py'):
-		#removes .py from the filename
-		client.load_extension(f'cogs.{filename[:-3]}')
+for filename in os.listdir('/home/pi/GameBot/bot/cogs'):
+    #checks if filename is a python file
+    print (filename)
+    if filename.endswith('.py'):
+	#removes .py from the filename
+        client.load_extension(f'cogs.{filename[:-3]}')
 
 client.run(token)
