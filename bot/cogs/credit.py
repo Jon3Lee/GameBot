@@ -38,6 +38,7 @@ class credit(commands.Cog):
     #@commands.has_role('Power')
     async def give(self, ctx, member, creds):
         #await self.check(ctx.author)
+        credits = abs(int(creds))
         role = discord.utils.get(ctx.guild.roles, id = 332012090690633738)
         
         if role not in ctx.author.roles:
@@ -51,17 +52,18 @@ class credit(commands.Cog):
             p_member = self.get_mention(member)
             #print(test)
             initialcreds = users[p_member]["socialcredits"]
-            users[p_member]["socialcredits"] += int(creds)
+            users[p_member]["socialcredits"] += credits 
             with open("/home/pi/GameBot/bot/cogs/scredit.json", "w") as f:
                 json.dump(users, f, indent = 4)
         
-            await ctx.send(f"Comrade you were given {creds} credits")
+            await ctx.send(f"Comrade you were given {credits} credits")
 
     @commands.command()
     #@commands.has_permissions(kick_members = True)
     #@commands.has_role('Power')
     async def remove(self, ctx, member : discord.Member, creds):
         #await self.check(ctx.author)
+        credits = abs(int(creds))
         role = discord.utils.get(ctx.guild.roles, id = 332012090690633738) 
         if role not in ctx.author.roles:
             await ctx.send(f"Only Pooh Bear and selected individuals can run this command")
@@ -70,8 +72,8 @@ class credit(commands.Cog):
                 users = json.load(f)
             user = ctx.author
             p_member = self.get_mention(member.id)
-            users[p_member]["socialcredits"] -= int(creds)
-            await ctx.send(f"Comrade you have lost {creds} credits.")
+            users[p_member]["socialcredits"] -= credits
+            await ctx.send(f"Comrade you have lost {credits} credits.")
             if users[p_member]["socialcredits"] <= 0:
                 await ctx.send(f"Begone")
                 await member.kick(reason = "No more credits")
