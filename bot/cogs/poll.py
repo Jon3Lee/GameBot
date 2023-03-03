@@ -13,5 +13,5 @@ class poll(commands.Cog):
         #on that.
 
 #Setup:
-def setup(client):
-    client.add_cog(poll(client))
+async def setup(client):
+    await client.add_cog(poll(client))

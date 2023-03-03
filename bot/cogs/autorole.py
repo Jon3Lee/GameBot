@@ -30,5 +30,5 @@ class autorole(commands.Cog):
 	 		await message.channel.send("Hey! Thanks for creating me!")
 
 #Setup
-def setup(client):
-	client.add_cog(autorole(client))
+async def setup(client):
+	await client.add_cog(autorole(client))

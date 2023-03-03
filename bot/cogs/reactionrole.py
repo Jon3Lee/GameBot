@@ -58,5 +58,5 @@ class reactionrole(commands.Cog):
                     await member.remove_roles(role)
                     print(f'Removed {role.name} from {member}')
 
-def setup(client):
-    client.add_cog(reactionrole(client))
+async def setup(client):
+    await client.add_cog(reactionrole(client))

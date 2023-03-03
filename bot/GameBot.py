@@ -2,16 +2,18 @@ import discord
 import os
 from discord.ext import commands
 import json
+import asyncio
+
 
 #Enable Intents
-intents = discord.Intents.default()
+intents = discord.Intents.all()
 intents.members = True 
 intents.reactions = True
 intents.messages = True
 intents.guilds = True
 
 client = commands.Bot(command_prefix = 'g.', help_command = None, intents = intents)
-token = open("/home/pi/GameBot/bot/token.txt", mode = "r").readline()
+token = open("token.txt", mode = "r").readline()
 
 
 #Checks if bot is connected and ready
@@ -32,12 +34,16 @@ async def load(ctx, extension):
 async def unload(ctx, extension):
 	client.unload_extension(f'cogs.{extension}')
 
-#goes through cogs folder for files
-for filename in os.listdir('/home/pi/GameBot/bot/cogs'):
-    #checks if filename is a python file
-    print (filename)
-    if filename.endswith('.py'):
-	#removes .py from the filename
-        client.load_extension(f'cogs.{filename[:-3]}')
+async def load_extensions():
+    for filename in os.listdir('cogs/'):
+        print (filename)
+        if filename.endswith('.py'):
+            await client.load_extension(f'cogs.{filename[:-3]}')
 
-client.run(token)
+async def main():
+    async with client:
+        await load_extensions()
+        await client.start(token)
+
+
+asyncio.run(main())

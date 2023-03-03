@@ -96,5 +96,5 @@ class cmds(commands.Cog):
 		await ctx.voice_client.resume()
 		await ctx.send("Resuming")
 
-def setup(client):
-		client.add_cog(cmds(client))
+async def setup(client):
+		await client.add_cog(cmds(client))

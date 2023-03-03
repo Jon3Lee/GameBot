@@ -29,5 +29,5 @@ class Help(commands.Cog):
 		print(f'{ctx.author} called the help command.')
 
 
-def setup(client):
-	client.add_cog(Help(client))
+async def setup(client):
+	await client.add_cog(Help(client))
