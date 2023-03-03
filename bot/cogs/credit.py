@@ -19,8 +19,6 @@ class credit(commands.Cog):
         print("Checking Credits")
         with open("/home/lee/GameBot/bot/cogs/scredit.json", "r") as f:
             users = json.load(f)
-        for user in users:
-            print (user)
         user = ctx.author
         credit_amt = users[str(user.id)]["socialcredits"]
         em = discord.Embed(title = f"{ctx.author.name}'s credit", color = discord.Color.red())
@@ -73,23 +71,6 @@ class credit(commands.Cog):
                 users[p_member]["socialcredits"] = 10
             with open("/home/lee/GameBot/bot/cogs/scredit.json", "w") as f:
                 json.dump(users, f, indent = 4)
-
-    async def check(self,user):
-        
-        with open("/home/lee/GameBot/bot/cogs/scredit.json", "r") as f:
-            users = json.load(f)
-        
-        if str(user.id) in users:
-            return False
-        else:
-            users[str(user.id)] = {}
-            users[str(user.id)]["socialcredits"] = 10
-        with open("/home/lee/GameBot/bot/cogs/scredit.json", "w") as f:
-            json.dump(users, f, indent = 4)
-    
-    async def get_credit_data(self):
-        with open("/home/lee/GameBot/bot/cogs/scredit.json", "r") as f:
-            users = json.load(f)
 
     async def get_mention(self, mention):
         mention = str(mention)
